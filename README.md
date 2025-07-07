@@ -1,29 +1,27 @@
 # Agent car insurance rates v 1.1
 AI Agent can response your asks about car insurance and where this information, such as business rules, rates, and insurance coverage, is private and is typically managed using an Excel spreadsheet.
 
-### Features:
+## Features:
 🧠 **The Chat quickly understands your question:** Because it integrates a high-level and mature LLM model.  
 🔒 **Easy access to private Excel in Google Drive**: Through RAG, you can access to info into Excel file with the key information of the sale operation.  
 🔄 **The Agent always response with updated information**: From your private Excel in Google Drive.
 
-### Prerequisites:
+## Prerequisites:
 - A Hugging Face account API inference serverless.
 - A Huggin Face Token for consume the API.
 - A Google Colab account associated with a Gmail account.
-- 
 
 
 ## Step-by-step plan
 
-- [Set up Google Drive](###Set up Google Drive) 
-- [Asking to AI Agentic]###Asking to AI Agentic
+- [Set up Google Drive](#Set up Google Drive) 
+- [Asking to AI Agentic](#Asking to AI Agentic)
 
 
 
+# Set up Google Colab environment(MVP)
 
-## Set up Google Colab environment(MVP)
-
-1. ###Set up Google Drive
+1. ## Set up Google Drive
    ```bash
    from google.colab import drive
    drive.mount('/content/drive')
@@ -188,7 +186,7 @@ AI Agent can response your asks about car insurance and where this information, 
     builder.add_edge("tools", "assistant")
     patrick = builder.compile()
 
-9. ###Asking to AI Agentic
+9. ## Asking to AI Agentic
    ```bash
    messages = [HumanMessage(content="¿Cuál es el precio aproximado anual de un plan?")]
    response = patrick.invoke({"messages": messages})

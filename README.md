@@ -13,14 +13,21 @@ AI Agent can response your asks about car insurance and where this information, 
 
 
 ## Step-by-step plan
-
-- [Set up Google Drive](#Set up Google Drive) 
+- [Set up Google Drive](#set-up-google-drive)
+- [Set up dependencies](#set-up-dependencies)
+- [Set up Inference serverless API](#set-up-inference-serverless-api)
+- [Set up dataset and dataframe](#set-up-dataset-and-dataframe)
+- [Create Document Object LangGraph](#create-document-object-langGraph)
+- [Set up Retriever tool(LangGraph)](#set-up-retriever-tool(langGraph))
+- [Set up Agent and setup RAG](#set-up-agent-and-setup-rag)
+- [Set up Graph Agent](#set-up-graph-agent)
 - [Asking to AI Agentic](#asking-to-ai-agentic)
-- [Instalación](#instalación)
+- [AI Agent output](#ai-agent-output)
 
 
 
 # Set up Google Colab environment(MVP)
+
 
 ## Set up Google Drive
 ```bash
@@ -30,39 +37,39 @@ drive.mount('/content/drive')
 
 ## Set up dependencies
 ```bash
-   !pip install --quiet langchain huggingface_hub faiss-cpu pandas python-dotenv
-   !pip install --quiet datasets
+!pip install --quiet langchain huggingface_hub faiss-cpu pandas python-dotenv
+!pip install --quiet datasets
 ```
 
 ## Set up Inference serverless API
 ```bash
-   from huggingface_hub import notebook_login
-   notebook_login()
+from huggingface_hub import notebook_login
+notebook_login()
 ```
 
 ## Set up dataset and dataframe
-   ```bash
-   import pandas as pd
-   import datasets
-   from datasets import Dataset
-   from langchain.docstore.document import Document
-   excel_path = '/content/drive/MyDrive/Colab Notebooks/base_acme_2025.xlsx'
-   df = pd.read_excel(excel_path)
-   print(f"Filas cargadas: {len(df)}")
+```bash
+import pandas as pd
+import datasets
+from datasets import Dataset
+from langchain.docstore.document import Document
+excel_path = '/content/drive/MyDrive/Colab Notebooks/base_acme_2025.xlsx'
+df = pd.read_excel(excel_path)
+print(f"Filas cargadas: {len(df)}")
    
-   from datasets import Dataset
-   hf_dataset = Dataset.from_pandas(df)
-   print(hf_dataset)
-   from langchain.docstore.document import Document
+from datasets import Dataset
+hf_dataset = Dataset.from_pandas(df)
+print(hf_dataset)
+from langchain.docstore.document import Document
 ```
 
 ## Create Document Object LangGraph
-   ```bash
-   from langchain.docstore.document import Document
-   hf_dataset = Dataset.from_pandas(df)
-   print(hf_dataset)
+```bash
+from langchain.docstore.document import Document
+hf_dataset = Dataset.from_pandas(df)
+print(hf_dataset)
    
-   documents = []
+documents = []
    for idx, example in enumerate(hf_dataset):
     aseguradora = example['aseguradora']
     coberturas = example['coberturas_incluidas']
@@ -114,21 +121,21 @@ drive.mount('/content/drive')
 ```
 
 ## Set up Retriever tool(LangGraph)
-   ```bash
-   !pip install langchain_community
-   from langchain_community.retrievers import BM25Retriever
-   from langchain.tools import Tool
-   !pip install rank_bm25
+```bash
+!pip install langchain_community
+from langchain_community.retrievers import BM25Retriever
+from langchain.tools import Tool
+!pip install rank_bm25
    
-   bm25_retriever = BM25Retriever.from_documents(documents)
-   
-   def extract_text(query: str) -> str:
-    """Retrieve detailed information about Acme's auto insurance policies."""
-    results = bm25_retriever.invoke(query)
-    if results:
-        return "\n\n".join([doc.page_content for doc in results[:3]])
-    else:
-        return "No matching guest information found."
+bm25_retriever = BM25Retriever.from_documents(documents)
+ 
+def extract_text(query: str) -> str:
+   """Retrieve detailed information about Acme's auto insurance policies."""
+   results = bm25_retriever.invoke(query)
+   if results:
+      return "\n\n".join([doc.page_content for doc in results[:3]])
+   else:
+      return "No matching guest information found."
         
         
    guest_info_tool = Tool(
@@ -139,7 +146,7 @@ drive.mount('/content/drive')
 ```
 
 ## Set up Agent and setup RAG
-   ```bash
+```bash
    !pip install langgraph
    !pip install langchain_huggingface
    from typing import TypedDict, Annotated
@@ -151,8 +158,8 @@ drive.mount('/content/drive')
    from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
 ```
 
-## Set up Graph Agent, nodes, tools and etc
-   ```bash
+## Set up Graph Agent
+```bash
    # Generate the chat interface, including the tools
    from google.colab import userdata
    hf_token = userdata.get('HF_TOKEN')
@@ -208,6 +215,6 @@ drive.mount('/content/drive')
 
 ## AI Agent output
 
-🎩 Patrick's Response:
+**🎩 Patrick's Response:**  
 Según la información proporcionada por la aseguradora Acme, el precio aproximado anual de un plan de seguro de autos varía entre $500.000 y $1.103.000, dependiendo del modelo y del deducible elegido.
 

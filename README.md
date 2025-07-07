@@ -31,7 +31,7 @@ AI Agent can response your asks about car insurance and where this information, 
 
 ## Clone the project
 ```bash
-glit clone git@github.com:pablocevalenzuela/ai_agent_car_insurance_rates_v1_1.git
+git clone git@github.com:pablocevalenzuela/ai_agent_car_insurance_rates_v1_1.git
 cd ai_agent_car_insurance_rates_v1_1
 git init
 ```

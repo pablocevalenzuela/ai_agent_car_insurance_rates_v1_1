@@ -188,12 +188,12 @@ AI Agent can response your asks about car insurance and where this information, 
     patrick = builder.compile()
 
 9. Asking to AI Agentic
-```bash
-messages = [HumanMessage(content="¿Cuál es el precio aproximado anual de un plan?")]
-response = patrick.invoke({"messages": messages})
-
-print("🎩 Patrick's Response:")
-print(response['messages'][-1].content)
+   ```bash
+   messages = [HumanMessage(content="¿Cuál es el precio aproximado anual de un plan?")]
+   response = patrick.invoke({"messages": messages})
+   
+   print("🎩 Patrick's Response:")
+   print(response['messages'][-1].content)
 
 
 ## Output:

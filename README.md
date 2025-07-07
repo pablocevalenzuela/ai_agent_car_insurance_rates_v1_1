@@ -194,3 +194,9 @@ response = patrick.invoke({"messages": messages})
 
 print("🎩 Patrick's Response:")
 print(response['messages'][-1].content)
+
+
+## Output:
+🎩 Patrick's Response:
+Según la información proporcionada por la aseguradora Acme, el precio aproximado anual de un plan de seguro de autos varía entre $500.000 y $1.103.000, dependiendo del modelo y del deducible elegido.
+

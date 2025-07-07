@@ -22,15 +22,17 @@ AI Agent can response your asks about car insurance and where this information, 
 
 # Set up Google Colab environment(MVP)
 
-1. ## Set up Google Drive
-   ```bash
-   from google.colab import drive
-   drive.mount('/content/drive')
+## Set up Google Drive
+```bash
+from google.colab import drive
+drive.mount('/content/drive')
+```
 
-2. Set up dependencies
+## Set up dependencies
    ```bash
    !pip install --quiet langchain huggingface_hub faiss-cpu pandas python-dotenv
    !pip install --quiet datasets
+   ```
 
 3. Set up Inference serverless API
    ```bash
@@ -194,6 +196,8 @@ AI Agent can response your asks about car insurance and where this information, 
    
    print("🎩 Patrick's Response:")
    print(response['messages'][-1].content)
+
+
 
 
 ## AI Agent output

@@ -13,16 +13,17 @@ AI Agent can response your asks about car insurance and where this information, 
 - 
 
 
-### Steps to implementation in Google Colab
+## Step-by-step plan
 
-- [Instalación](#instalación)
+- [Set up Google Drive](###Set up Google Drive) 
+- [Asking to AI Agentic]###Asking to AI Agentic
 
 
 
 
 ## Set up Google Colab environment(MVP)
 
-1. Set up Google Drive
+1. ###Set up Google Drive
    ```bash
    from google.colab import drive
    drive.mount('/content/drive')
@@ -187,7 +188,7 @@ AI Agent can response your asks about car insurance and where this information, 
     builder.add_edge("tools", "assistant")
     patrick = builder.compile()
 
-9. Asking to AI Agentic
+9. ###Asking to AI Agentic
    ```bash
    messages = [HumanMessage(content="¿Cuál es el precio aproximado anual de un plan?")]
    response = patrick.invoke({"messages": messages})
@@ -196,7 +197,7 @@ AI Agent can response your asks about car insurance and where this information, 
    print(response['messages'][-1].content)
 
 
-## Output:
+## AI Agent output:
 🎩 Patrick's Response:
 Según la información proporcionada por la aseguradora Acme, el precio aproximado anual de un plan de seguro de autos varía entre $500.000 y $1.103.000, dependiendo del modelo y del deducible elegido.
 

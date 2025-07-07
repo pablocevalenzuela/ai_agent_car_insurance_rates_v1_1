@@ -15,7 +15,7 @@ AI Agent can response your asks about car insurance and where this information, 
 ## Step-by-step plan
 
 - [Set up Google Drive](#Set up Google Drive) 
-- [Asking to AI Agentic](#1-asking-to-ai-agentic)
+- [Asking to AI Agentic](#asking-to-ai-agentic)
 - [Instalación](#instalación)
 
 
@@ -144,7 +144,7 @@ AI Agent can response your asks about car insurance and where this information, 
    from langgraph.prebuilt import tools_condition
    from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
 
-8. Set up Graph Agent, nodes, tools and etc
+## Set up Graph Agent, nodes, tools and etc
    ```bash
    # Generate the chat interface, including the tools
    from google.colab import userdata
@@ -187,8 +187,8 @@ AI Agent can response your asks about car insurance and where this information, 
     builder.add_edge("tools", "assistant")
     patrick = builder.compile()
 
-## 1- Asking to AI Agentic
-   ```bash
+## Asking to AI Agentic
+```bash
    messages = [HumanMessage(content="¿Cuál es el precio aproximado anual de un plan?")]
    response = patrick.invoke({"messages": messages})
    

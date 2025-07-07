@@ -10,6 +10,7 @@ AI Agent can response your asks about car insurance and where this information, 
 - A Hugging Face account API inference serverless.
 - A Huggin Face Token for consume the API.
 - A Google Colab account associated with a Gmail account.
+- Set up a new Google Colab Secret for a HF_TOKEN env variable.
 
 
 ## Step-by-step plan

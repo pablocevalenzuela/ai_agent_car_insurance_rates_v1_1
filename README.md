@@ -13,6 +13,7 @@ AI Agent can response your asks about car insurance and where this information, 
 
 
 ## Step-by-step plan
+- [Clone the project](#clone-the-project)
 - [Set up Google Drive](#set-up-google-drive)
 - [Set up dependencies](#set-up-dependencies)
 - [Set up Inference serverless API](#set-up-inference-serverless-api)
@@ -26,8 +27,17 @@ AI Agent can response your asks about car insurance and where this information, 
 
 
 
-# Set up Google Colab environment(MVP)
+# Clone AI Agent Project
 
+## Clone the project
+```bash
+glit clone git@github.com:pablocevalenzuela/ai_agent_car_insurance_rates_v1_1.git
+cd ai_agent_car_insurance_rates_v1_1
+git init
+```
+
+
+# Set up Google Colab environment(MVP)
 
 ## Set up Google Drive
 ```bash

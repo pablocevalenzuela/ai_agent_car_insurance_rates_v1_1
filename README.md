@@ -29,17 +29,18 @@ drive.mount('/content/drive')
 ```
 
 ## Set up dependencies
-   ```bash
+```bash
    !pip install --quiet langchain huggingface_hub faiss-cpu pandas python-dotenv
    !pip install --quiet datasets
-   ```
+```
 
-3. Set up Inference serverless API
-   ```bash
+## Set up Inference serverless API
+```bash
    from huggingface_hub import notebook_login
    notebook_login()
+```
 
-4. Set up dataset and dataframe
+## Set up dataset and dataframe
    ```bash
    import pandas as pd
    import datasets
@@ -53,8 +54,9 @@ drive.mount('/content/drive')
    hf_dataset = Dataset.from_pandas(df)
    print(hf_dataset)
    from langchain.docstore.document import Document
+```
 
-5. Create Document Object LangGraph
+## Create Document Object LangGraph
    ```bash
    from langchain.docstore.document import Document
    hf_dataset = Dataset.from_pandas(df)
@@ -109,8 +111,9 @@ drive.mount('/content/drive')
     documents.append(doc)
     
     print(f"Document objects creados: {len(documents)}")
+```
 
-6. Set up Retriever tool(LangGraph)
+## Set up Retriever tool(LangGraph)
    ```bash
    !pip install langchain_community
    from langchain_community.retrievers import BM25Retriever
@@ -133,8 +136,9 @@ drive.mount('/content/drive')
     func=extract_text,
     description="Retrieve detailed information about Acme's auto insurance policies."
     )
+```
 
-7. Set up Agent and setup RAG
+## Set up Agent and setup RAG
    ```bash
    !pip install langgraph
    !pip install langchain_huggingface
@@ -145,6 +149,7 @@ drive.mount('/content/drive')
    from langgraph.graph import START, StateGraph
    from langgraph.prebuilt import tools_condition
    from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
+```
 
 ## Set up Graph Agent, nodes, tools and etc
    ```bash
@@ -168,7 +173,7 @@ drive.mount('/content/drive')
     def assistant(state: AgentState):
     return {
         "messages": [chat_with_tools.invoke(state["messages"])],
-    }
+        }
     
     ## The graph
     builder = StateGraph(AgentState)
@@ -188,6 +193,8 @@ drive.mount('/content/drive')
     
     builder.add_edge("tools", "assistant")
     patrick = builder.compile()
+```
+
 
 ## Asking to AI Agentic
 ```bash
@@ -196,11 +203,11 @@ drive.mount('/content/drive')
    
    print("🎩 Patrick's Response:")
    print(response['messages'][-1].content)
-
-
+```
 
 
 ## AI Agent output
+
 🎩 Patrick's Response:
 Según la información proporcionada por la aseguradora Acme, el precio aproximado anual de un plan de seguro de autos varía entre $500.000 y $1.103.000, dependiendo del modelo y del deducible elegido.
 
